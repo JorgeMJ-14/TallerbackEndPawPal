@@ -1,17 +1,17 @@
 import { Mascotas } from "../modelos/mascotaModelo.js";
 
 // Crear una nueva mascota
-export const crearM = async (req, res) => {
+const crearM = async (req, res) => {
     try {
         const mascota = await Mascotas.create(req.body);
-        res.status(201).json(mascota);
+        res.status(200).json(mascota);
     } catch (error) {
         res.status(500).json({ error: 'Error al crear la mascota' });
     }
 };
 
 // Buscar todas las mascotas
-export const buscarM = async (req, res) => {
+const buscarM = async (req, res) => {
     try {
         const mascotas = await Mascotas.findAll();
         res.json(mascotas);
@@ -21,13 +21,13 @@ export const buscarM = async (req, res) => {
 };
 
 // Buscar una mascota por ID
-export const buscarIdM = async (req, res) => {
+const buscarIdM = async (req, res) => {
     try {
         const mascota = await Mascotas.findByPk(req.params.id);
         if (mascota) {
             res.json(mascota);
         } else {
-            res.status(404).json({ error: 'Mascota no encontrada' });
+            res.status(400).json({ error: 'Mascota no encontrada' });
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener la mascota' });
@@ -35,7 +35,7 @@ export const buscarIdM = async (req, res) => {
 };
 
 // Actualizar una mascota por ID
-export const actualizarM = async (req, res) => {
+const actualizarM = async (req, res) => {
     try {
         const [updated] = await Mascotas.update(req.body, {
             where: { id: req.params.id }
@@ -44,7 +44,7 @@ export const actualizarM = async (req, res) => {
             const mascota = await Mascotas.findByPk(req.params.id);
             res.json(mascota);
         } else {
-            res.status(404).json({ error: 'Mascota no encontrada' });
+            res.status(400).json({ error: 'Mascota no encontrada' });
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar la mascota' });
@@ -52,17 +52,19 @@ export const actualizarM = async (req, res) => {
 };
 
 // Eliminar una mascota por ID
-export const eliminarM = async (req, res) => {
+const eliminarM = async (req, res) => {
     try {
         const deleted = await Mascotas.destroy({
             where: { id: req.params.id }
         });
         if (deleted) {
-            res.status(204).send();
+            res.status(200).send();
         } else {
-            res.status(404).json({ error: 'Mascota no encontrada' });
+            res.status(400).json({ error: 'Mascota no encontrada' });
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar la mascota' });
     }
 };
+
+export { crearM, buscarM, buscarIdM, actualizarM, eliminarM };

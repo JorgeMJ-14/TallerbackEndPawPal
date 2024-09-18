@@ -1,6 +1,7 @@
 import express from 'express';
 import { db } from './database/conexion.js'; // Asegúrate de ajustar la ruta
 import { routerMascotas } from './rutas/mascotasRouter.js';
+import { routerClientes } from './rutas/clienteRouter.js';
 
 const app = express();
 const PORT = 4000;
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 
 //Llamar rutas de mascotas
 app.use("/mascotas",routerMascotas);
+app.use("/cliente",routerClientes);
 
 // Sincronizar Modelos
 db.sync({ force: true }).then(() => {

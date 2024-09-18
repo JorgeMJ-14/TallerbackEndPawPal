@@ -9,27 +9,27 @@ routerMascotas.get('/', (req, res) => {
 });
 
 // Crear una nueva mascota
-routerMascotas.post('/crear', (req, res) => {
+routerMascotas.post('/crearM', (req, res) => {
     crearM(req, res);
 });
 
 // Buscar todas las mascotas
-routerMascotas.get('/buscar', (req, res) => {
+routerMascotas.get('/buscarM', (req, res) => {
     buscarM(req, res);
 });
 
 // Buscar una mascota por ID
-routerMascotas.get('/buscarId/:id', (req, res) => {
+routerMascotas.get('/buscarIdM/:id', (req, res) => {
     buscarIdM(req, res);
 });
 
 // Actualizar una mascota por ID
-routerMascotas.put('/actualizar/:id', (req, res) => {
+routerMascotas.put('/actualizarM/:id', (req, res) => {
     actualizarM(req, res);
 });
 
 // Eliminar una mascota por ID
-routerMascotas.delete('/eliminar/:id', (req, res) => {
+routerMascotas.delete('/eliminarM/:id', (req, res) => {
     eliminarM(req, res);
 });
 

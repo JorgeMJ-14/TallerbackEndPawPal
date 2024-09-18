@@ -1,7 +1,14 @@
 import express from "express"
+import { db } from "./database/conexion.js";
 //Crear instancia de Express
 const app = express();
 
+//Verificar Conexion Base Datos
+db.authenticate().then(()=>{
+    console.log(`Conexion a Base de datos correcta`);
+}).catch(err=>{
+    console.log(`Conexion a Base de datos incorrecta ${err}`);
+});
 
 
 //Definir Rutas

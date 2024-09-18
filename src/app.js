@@ -19,7 +19,7 @@ db.authenticate().then(() => {
 
 // Definir Rutas
 app.get('/', (req, res) => {
-    res.send('Hola Adopta un Perrito');
+    res.send('Hola Adopta un Perrito en PawPal');
 });
 
 //Llamar rutas de mascotas

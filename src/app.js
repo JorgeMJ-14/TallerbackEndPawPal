@@ -28,7 +28,7 @@ app.use("/cliente",routerClientes);
 app.use("/solicitud",routerSolicitudes);
 
 // Sincronizar Modelos
-db.sync({ force: true }).then(() => {
+db.sync({ force: false}).then(() => {
     console.log('Tablas sincronizadas');
 
     // Iniciar el Servidor

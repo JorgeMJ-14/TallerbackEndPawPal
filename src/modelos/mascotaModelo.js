@@ -33,7 +33,7 @@ const Mascotas = db.define('Mascotas', {
         type: Sequelize.TEXT
     },
     estado: {
-        type: Sequelize.ENUM('Disponible', 'Adoptada'),
+        type: Sequelize.ENUM('Disponible', 'Adoptado'),
         defaultValue: 'Disponible'
     },
     fecha_ingreso: {

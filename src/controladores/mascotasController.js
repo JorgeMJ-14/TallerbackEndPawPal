@@ -58,7 +58,10 @@ const eliminarM = async (req, res) => {
             where: { id: req.params.id }
         });
         if (deleted) {
-            res.status(200).send();
+            res.status(200).json({
+                tipo: 'success',
+                mensaje: "Registro eliminado con éxito"
+            });
         } else {
             res.status(400).json({ error: 'Mascota no encontrada' });
         }
